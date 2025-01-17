@@ -1,0 +1,85 @@
+.accounts-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+}
+
+.banks-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bank-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.bank-name {
+    font-weight: bold;
+    color: #555;
+}
+
+.view-balance-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-balance-button:hover {
+    background-color: #0056b3;
+}
+
+.loading,
+.error {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
+
+.balance-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+    text-align: center;
+}
+
+.balance-summary {
+    margin-bottom: 15px;
+}
+
+.balance-amount {
+    font-size: 36px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.income-expense-details {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.income-expense-details p {
+    margin: 5px 0;
+    font-size: 16px;
+}
