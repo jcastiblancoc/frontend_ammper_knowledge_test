@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../assets/forms.css";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const Register = () => {
         phone: "",
         password: "",
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,53 +26,61 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await axios.post("http://127.0.0.1:8001/api/v1/users/register", formData);
-        alert(response.data.message || "Registro exitoso. Ahora puedes iniciar sesión.");
+            alert(response.data.message || "Registro exitoso. Ahora puedes iniciar sesión.");
+            navigate("/login");
         } catch (error) {
-        alert(error.response?.data?.detail || "Error al registrarte");
+            alert(error.response?.data?.detail || "Error al registrarte");
         }
     };
 
     return (
-        <div>
-        <h2>Registro</h2>
-        <form onSubmit={handleRegister}>
-            <input
-            type="text"
-            name="first_name"
-            placeholder="Nombre"
-            value={formData.first_name}
-            onChange={handleChange}
-            />
-            <input
-            type="text"
-            name="last_name"
-            placeholder="Apellido"
-            value={formData.last_name}
-            onChange={handleChange}
-            />
-            <input
-            type="email"
-            name="email"
-            placeholder="Correo Electrónico"
-            value={formData.email}
-            onChange={handleChange}
-            />
-            <input
-            type="text"
-            name="phone"
-            placeholder="Teléfono"
-            value={formData.phone}
-            onChange={handleChange}
-            />
-            <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={formData.password}
-            onChange={handleChange}
-            />
-            <button type="submit">Registrarse</button>
-        </form>
+        <div className="form-container">
+            <form className="formulario" onSubmit={handleRegister}>
+                <h2>Registro</h2>
+                <p>Crea una cuenta para continuar</p>
+
+                <input
+                    type="text"
+                    name="first_name"
+                    placeholder="Nombre"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Apellido"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Correo Electrónico"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Teléfono"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">Registrarse</button>
+            </form>
         </div>
     );
 };

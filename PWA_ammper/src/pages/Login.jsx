@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../assets/forms.css";
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://127.0.0.1:8001/api/v1/users/login/", 
+                "http://127.0.0.1:8001/api/v1/users/login/",
                 new URLSearchParams({
                     email,
                     password
@@ -25,7 +25,7 @@ const Login = () => {
             alert("Error al iniciar sesión: " + error.response?.data?.detail || "Desconocido");
         }
     };
-    
+
 
     return (
         <div className="form-container">
@@ -50,6 +50,9 @@ const Login = () => {
             Iniciar Sesión
             </button>
         </form>
+        <div className="register-link">
+                <Link to="/register">Regístrate aquí</Link>
+            </div>
         </div>
     );
 };

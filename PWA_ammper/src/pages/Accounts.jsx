@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../assets/banks.css";
+import { useNavigate } from "react-router-dom";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState([]);
-    const [balanceData, setBalanceData] = useState(null); // Balance, ingresos y egresos
-    const [loading, setLoading] = useState(false); // Indicador de carga
-    const [error, setError] = useState(null); // Manejo de errores
+    const [balanceData, setBalanceData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-    // Obtener cuentas al cargar el componente
     useEffect(() => {
         const fetchAccounts = async () => {
             setLoading(true);
@@ -17,7 +18,7 @@ const Accounts = () => {
                 const response = await axios.get("http://127.0.0.1:8001/api/v1/transactions/banks", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-                setAccounts(response.data.results); // Acceder a 'results' para obtener los bancos
+                setAccounts(response.data.banks);
             } catch (error) {
                 setError("Error al obtener las cuentas");
             } finally {
@@ -27,7 +28,6 @@ const Accounts = () => {
         fetchAccounts();
     }, [token]);
 
-    // Obtener balance de un banco específico
     const handleClick = async (bankId) => {
         setLoading(true);
         setError(null);
@@ -36,7 +36,7 @@ const Accounts = () => {
                 `http://127.0.0.1:8001/api/v1/transactions/banks/${bankId}/balance`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            setBalanceData(response.data); // Guardar balance, ingresos y egresos
+            setBalanceData(response.data);
         } catch (error) {
             setError("Error al obtener el balance del banco");
         } finally {
@@ -44,23 +44,26 @@ const Accounts = () => {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    };
+
     return (
-        <div className="accounts-container">
+        <div className="form-container">
+            <button className="logout-button" onClick={handleLogout}>Salir</button>
             <h2 className="title">Bancos</h2>
 
-            {/* Mostrar error si ocurre */}
             {error && <p className="error">{error}</p>}
 
-            {/* Mostrar indicador de carga */}
             {loading && <p className="loading">Cargando...</p>}
 
-            {/* Lista de bancos */}
             <ul className="banks-list">
                 {accounts.map((account) => (
                     <li key={account.id} className="bank-item">
                         <span className="bank-name">{account.institution}</span>
                         <button
-                            className="view-balance-button"
+                            className="formulario button"
                             onClick={() => handleClick(account.id)}
                         >
                             Ver Balance
@@ -69,7 +72,6 @@ const Accounts = () => {
                 ))}
             </ul>
 
-            {/* Mostrar detalles del balance */}
             {balanceData && (
                 <div className="balance-container">
                     <div className="balance-summary">

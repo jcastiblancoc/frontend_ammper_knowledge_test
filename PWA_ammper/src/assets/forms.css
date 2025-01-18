@@ -1,36 +1,35 @@
-/* Estilos globales */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #f4f4f4); /* Fondo suave */
+    background: linear-gradient(to bottom, #ffffff, #f4f4f4);
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .form-container {
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    box-shadow: 0px 4px 12px rgba(240, 60, 68, 0.9);
     width: 400px;
     padding: 20px;
     text-align: center;
   }
-  
+
   .formulario h2 {
     font-size: 1.8rem;
-    color: #222; /* Texto oscuro */
+    color: #222;
     margin-bottom: 1rem;
     font-weight: bold;
   }
-  
+
   .formulario p {
     font-size: 0.95rem;
-    color: #555; /* Texto gris */
+    color: #555;
     margin-bottom: 2rem;
   }
-  
+
   .formulario input,
   .formulario button {
     width: 100%;
@@ -40,51 +39,64 @@ body {
     font-size: 1rem;
     box-sizing: border-box;
   }
-  
+
   .formulario input {
     border: 1px solid #ccc;
-    background-color: #f9f9f9; /* Fondo claro */
+    background-color: #f9f9f9;
   }
-  
+
   .formulario input:focus {
-    border: 1px solid #007bff; /* Color azul en enfoque */
+    border: 1px solid #f03c44;
     outline: none;
     background: #fff;
   }
-  
+
   .formulario button {
     border: none;
-    background-color: #007bff;
+    background-color: #f03c44;
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   .formulario button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+    background-color: #ee5f66;
   }
-  
+
   .formulario button:disabled {
-    background-color: #ccc; /* Botón desactivado */
+    background-color: #ccc;
     cursor: not-allowed;
   }
-  
+
   .formulario .social-icons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 1rem;
   }
-  
+
   .formulario .social-icons a {
     color: #555;
     font-size: 1.2rem;
     transition: color 0.3s;
   }
-  
+
   .formulario .social-icons a:hover {
-    color: #007bff; /* Azul al pasar el cursor */
+    color: #007bff;
   }
-  
-  
+
+  .register-link {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
