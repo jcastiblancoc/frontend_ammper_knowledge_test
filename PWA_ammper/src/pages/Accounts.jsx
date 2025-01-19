@@ -15,7 +15,7 @@ const Accounts = () => {
         const fetchAccounts = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("https://54.226.202.146:8000/api/v1/transactions/banks", {
+                const response = await axios.get("http://localhost:8000/api/v1/transactions/banks", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 console.log(response.data.banks);
@@ -34,7 +34,7 @@ const Accounts = () => {
         setError(null);
         try {
             const response = await axios.get(
-                `https://54.226.202.146:8000/api/v1/transactions/banks/${bankId}/balance`,
+                `http://localhost:8000/api/v1/transactions/banks/${bankId}/balance`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setBalanceData(response.data);
