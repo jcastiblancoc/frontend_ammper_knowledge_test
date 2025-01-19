@@ -15,7 +15,7 @@ const Accounts = () => {
         const fetchAccounts = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("http://127.0.0.1:8001/api/v1/transactions/banks", {
+                const response = await axios.get("https://f77e-181-237-111-63.ngrok-free.app/api/v1/transactions/banks", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setAccounts(response.data.banks);
@@ -33,7 +33,7 @@ const Accounts = () => {
         setError(null);
         try {
             const response = await axios.get(
-                `http://127.0.0.1:8001/api/v1/transactions/banks/${bankId}/balance`,
+                `https://f77e-181-237-111-63.ngrok-free.app/api/v1/transactions/banks/${bankId}/balance`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setBalanceData(response.data);
