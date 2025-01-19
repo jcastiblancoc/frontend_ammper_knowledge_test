@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     cors: true,
     proxy: {
-      '/api': 'http://127.0.0.1:8001',
+      '/api': 'https://f77e-181-237-111-63.ngrok-free.app',
     },
   },
 });
