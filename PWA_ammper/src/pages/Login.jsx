@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "https://90c5-181-237-111-63.ngrok-free.app/api/v1/users/login/",
+                "http://54.226.202.146:8000/api/v1/users/login/",
                 new URLSearchParams({
                     email,
                     password

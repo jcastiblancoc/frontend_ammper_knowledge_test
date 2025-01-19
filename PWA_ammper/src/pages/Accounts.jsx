@@ -15,9 +15,10 @@ const Accounts = () => {
         const fetchAccounts = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("https://90c5-181-237-111-63.ngrok-free.app/api/v1/transactions/banks", {
+                const response = await axios.get("http://54.226.202.146:8000/api/v1/transactions/banks", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
+                console.log(response.data.banks);
                 setAccounts(response.data.banks);
             } catch (error) {
                 setError("Error al obtener las cuentas");
@@ -33,7 +34,7 @@ const Accounts = () => {
         setError(null);
         try {
             const response = await axios.get(
-                `https://90c5-181-237-111-63.ngrok-free.app/api/v1/transactions/banks/${bankId}/balance`,
+                `http://54.226.202.146:8000/api/v1/transactions/banks/${bankId}/balance`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setBalanceData(response.data);

@@ -25,7 +25,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://90c5-181-237-111-63.ngrok-free.app/api/v1/users/register", formData);
+            const response = await axios.post("http://54.226.202.146:8000/api/v1/users/register", formData);
             alert(response.data.message || "Registro exitoso. Ahora puedes iniciar sesión.");
             navigate("/login");
         } catch (error) {
