@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://127.0.0.1:8000/api/v1/users/login/",
+                "http://54.226.202.146:8000/api/v1/users/login/",
                 new URLSearchParams({
                     email,
                     password
