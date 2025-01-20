@@ -34,7 +34,7 @@ const Accounts = () => {
         setError(null);
         try {
             const response = await axios.get(
-                `http://54.226.202.146:8000/v1/transactions/banks/${bankId}/balance`,
+                `http://54.226.202.146:8000/api/v1/transactions/banks/${bankId}/balance`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setBalanceData(response.data);
